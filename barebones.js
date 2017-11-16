@@ -1,5 +1,7 @@
 //var exports = module.exports = {};
 
+
+
 var express = require('express');
 var app = express();
 
@@ -21,9 +23,25 @@ app.get('/', function (req, res) {
 	res.send('Here is a blank homepage.')
 })
 
+app.get('/ep', function (req, res) {
+
+	console.log('react endpoint');
+	ReactDOM.render(
+	  '<h1>Hello, world!</h1>',
+	  document.getElementById('root')
+	);
+	
+	res.send(ReactDOM);
+	
+})
+
+
+
 app.get('/kill', function (req, res) {
+	
 	// kill server; never do this in production
 	console.log('killing server');
 	res.send('Killing server...')
 	serverHandle.close();
 })
+
